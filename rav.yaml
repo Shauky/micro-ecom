@@ -10,7 +10,7 @@ scripts:
   win_installs:
     - pip-compile src/requirements/requirements.in -o src/requirements.txt
     - python -m pip install -r src/requirements.txt
-    - npm install
+    - npm install`
   win_freeze: python -m pip freeze
   vendor_pull:
     - rm -rf src/static/vendor

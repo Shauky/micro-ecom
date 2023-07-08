@@ -1,11 +1,12 @@
+from cfehome.env import config
+import dj_database_url
 
-DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'neondb',
-    'USER': 'shaukathmohamed',
-    'PASSWORD': '6Hg8jGsaDboL',
-    'HOST': 'ep-misty-flower-640153.ap-southeast-1.aws.neon.tech',
-    'PORT': '5432',
-  }
-}
+DATABASE_URL = config("DATABASE_URL", default=None)
+if DATABASE_URL is not None:
+    DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        conn_health_checks=True
+    )
+    }

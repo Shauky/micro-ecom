@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="flex flex-col lg:flex-row">
+
+    <div class="w-full">
+    <div class="flex flex-col lg:flex-row">
+        <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+            <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Subscribe and buy for</h5>
+            <div class="flex items-baseline text-gray-900 dark:text-white">
+                <span class="text-3xl font-semibold">MVR</span>
+                <span class="text-5xl font-extrabold tracking-tight">49</span>
+            </div>
+            <!-- List -->
+            <button type="button" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Add Items</button>
+        </div>
+        <!-- <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+        </div> -->
+    </div>
+
+        <h3 class="text-3xl font-bold dark:text-white">{{object.name}} Shop</h3>
+        <!-- main content -->
+
+        <p class="mb-3 text-gray-500 dark:text-gray-400">Track work across the enterprise through an open, collaborative platform. <a href="#" class="font-medium text-blue-600 underline dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:no-underline">Link issues across Jira</a> and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
+
+        <div>
+            {% if is_owner %}
+                {% include 'products/attachments.html' with attachments=attachments %}
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="w-full">
+        <!-- sidebar -->
+
+    <div id="gallery">
+        <div class="grid gap-4">
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+            </div>
+            <div class="grid grid-cols-5 gap-4">
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if form %}
+    <h3> Update Product </h3>
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn-submit space-y-4" value="Create">Update</button>
+
+
+    </form>
+    {% endif %}
+    </div>
+
+   
+
+</div>
+{% endblock %}
